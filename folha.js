@@ -28,4 +28,18 @@ longoBtn.addEventListener('click', () => {
 function alterarContexto(contexto) {
     html.setAttribute('data-contexto', contexto);
     img.setAttribute('src', `./imagens/${contexto}.png`);
+    switch (contexto) {
+        case 'foco':
+            appTitle.innerHTML = ` Otimize sua produtividade,<br>
+                <strong class="app__title-strong">mergulhe no que importa.</strong>`;
+            break;
+        case 'descanso-curto':
+            appTitle.innerHTML = ` Sua saúde é importante,<br>
+                <strong class="app__title-strong">faça uma pausa.</strong>`;
+            break;
+        case 'descanso-longo':
+            appTitle.innerHTML = ` Recarregue suas energias,<br>
+                <strong class="app__title-strong">faça uma pausa longa.</strong>`;
+            break;
+    }
 }
