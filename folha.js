@@ -14,15 +14,24 @@ const longoTimer = 900;
 
 focoBtn.addEventListener('click', () => {
     alterarContexto('foco');
+    focoBtn.classList.add('active');
+    curtoBtn.classList.remove('active');
+    longoBtn.classList.remove('active');
 })
 
 curtoBtn.addEventListener('click', () => {
     alterarContexto('descanso-curto');
+    curtoBtn.classList.add('active');
+    focoBtn.classList.remove('active');
+    longoBtn.classList.remove('active');
 });
 
 
 longoBtn.addEventListener('click', () => {
     alterarContexto('descanso-longo');
+    longoBtn.classList.add('active');
+    focoBtn.classList.remove('active');
+    curtoBtn.classList.remove('active');
 });
 
 function alterarContexto(contexto) {
