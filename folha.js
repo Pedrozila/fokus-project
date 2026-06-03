@@ -66,12 +66,19 @@ function alterarContexto(contexto) {
 }
 
 const contagemRegressiva = () => {
-    iniciar();
+    if (tempoRestante <= 0) {
+        alert('Tempo esgotado!');
+        clearInterval(intervaloId);
+        return;
+    }
     tempoRestante -= 1;
 }
 
-startBtn.addEventListener('click', contagemRegressiva);
+startBtn.addEventListener('click', iniciarOuPausar);
 
-function iniciar() {
+function iniciarOuPausar() {
+    if (intervaloId) {
+        clearInterval(intervaloId);
+    }
     intervaloId = setInterval(contagemRegressiva, 1000);
 }
