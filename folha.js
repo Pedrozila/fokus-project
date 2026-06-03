@@ -2,13 +2,16 @@ const html = document.querySelector('html');
 const focoBtn = document.querySelector('.app__card-button--foco');
 const curtoBtn = document.querySelector('.app__card-button--curto');
 const longoBtn = document.querySelector('.app__card-button--longo');
-const startBtn = document.querySelector('.app__card-primary-button');
+const startBtn = document.querySelector('#start-pause');
 const appTitle = document.querySelector('.app__title');
 const img = document.querySelector('.app__image');
 const timer = document.querySelector('#timer');
 const btnArra = document.querySelectorAll('.app__card-button');
 const togleMusica = document.querySelector('#alternar-musica');
 const musica = new Audio('./sons/luna-rise-part-one.mp3');
+
+let tempoRestante = 5;
+let intervaloId = null;
 
 musica.loop = true;
 togleMusica.addEventListener('change', () => {
@@ -60,4 +63,15 @@ function alterarContexto(contexto) {
                 <strong class="app__title-strong">faça uma pausa longa.</strong>`;
             break;
     }
+}
+
+const contagemRegressiva = () => {
+    iniciar();
+    tempoRestante -= 1;
+}
+
+startBtn.addEventListener('click', contagemRegressiva);
+
+function iniciar() {
+    intervaloId = setInterval(contagemRegressiva, 1000);
 }
