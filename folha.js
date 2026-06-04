@@ -10,6 +10,7 @@ const btnArra = document.querySelectorAll('.app__card-button');
 const togleMusica = document.querySelector('#alternar-musica');
 const musica = new Audio('./sons/luna-rise-part-one.mp3');
 const pausePlay = document.querySelector('#start-pause span');
+const playIcon = document.querySelector('#start-pause img');
 
 let tempoRestante = 5;
 let intervaloId = null;
@@ -83,11 +84,13 @@ function iniciarOuPausar() {
         return;
     }
     intervaloId = setInterval(contagemRegressiva, 1000);
+    playIcon.setAttribute('src', './imagens/pause.png');
     pausePlay.textContent = 'Pausar';
 }
 
 function zerar() {
     clearInterval(intervaloId);
+    playIcon.setAttribute('src', './imagens/play_arrow.png');
     pausePlay.textContent = 'Iniciar';
     intervaloId = null;
 }
