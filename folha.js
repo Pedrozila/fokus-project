@@ -9,6 +9,7 @@ const timer = document.querySelector('#timer');
 const btnArra = document.querySelectorAll('.app__card-button');
 const togleMusica = document.querySelector('#alternar-musica');
 const musica = new Audio('./sons/luna-rise-part-one.mp3');
+const pausePlay = document.querySelector('#start-pause span');
 
 let tempoRestante = 5;
 let intervaloId = null;
@@ -78,7 +79,15 @@ startBtn.addEventListener('click', iniciarOuPausar);
 
 function iniciarOuPausar() {
     if (intervaloId) {
-        clearInterval(intervaloId);
+        zerar();
+        return;
     }
     intervaloId = setInterval(contagemRegressiva, 1000);
+    pausePlay.textContent = 'Pausar';
+}
+
+function zerar() {
+    clearInterval(intervaloId);
+    pausePlay.textContent = 'Iniciar';
+    intervaloId = null;
 }
