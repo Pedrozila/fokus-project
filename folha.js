@@ -12,7 +12,7 @@ const musica = new Audio('./sons/luna-rise-part-one.mp3');
 const pausePlay = document.querySelector('#start-pause span');
 const playIcon = document.querySelector('#start-pause img');
 
-let tempoRestante = 5;
+let tempoRestante = 1500;
 let intervaloId = null;
 
 musica.loop = true;
@@ -30,22 +30,26 @@ const longoTimer = 900;
 
 
 focoBtn.addEventListener('click', () => {
+    tempoRestante = 1500;
     alterarContexto('foco');
     focoBtn.classList.add('active');
 })
 
 curtoBtn.addEventListener('click', () => {
+    tempoRestante = 300;
     alterarContexto('descanso-curto');
     curtoBtn.classList.add('active');
 });
 
 
 longoBtn.addEventListener('click', () => {
+    tempoRestante = 900;
     alterarContexto('descanso-longo');
     longoBtn.classList.add('active');
 });
 
 function alterarContexto(contexto) {
+    mostrarTempo();
     btnArra.forEach((btn) => {
         btn.classList.remove('active');
     });
@@ -97,8 +101,12 @@ function zerar() {
 }
 
 function mostrarTempo() {
-    const tempo = tempoRestante;
-    timer.innerHTML = `${tempo}`
+    const tempo = new Date(tempoRestante * 1000);
+    const tempoFormatado = tempo.toLocaleTimeString('pt-BR', {
+        minute: '2-digit',
+        second: '2-digit',
+    });
+    timer.innerHTML = `${tempoFormatado}`;
 }
 
 mostrarTempo();
