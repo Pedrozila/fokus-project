@@ -74,6 +74,7 @@ const contagemRegressiva = () => {
         return;
     }
     tempoRestante -= 1;
+    mostrarTempo();
 }
 
 startBtn.addEventListener('click', iniciarOuPausar);
@@ -94,3 +95,10 @@ function zerar() {
     pausePlay.textContent = 'Iniciar';
     intervaloId = null;
 }
+
+function mostrarTempo() {
+    const tempo = tempoRestante;
+    timer.innerHTML = `${tempo}`
+}
+
+mostrarTempo();
