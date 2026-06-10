@@ -81,7 +81,6 @@ const contagemRegressiva = () => {
     mostrarTempo();
 }
 
-startBtn.addEventListener('click', iniciarOuPausar);
 
 function iniciarOuPausar() {
     if (intervaloId) {
@@ -108,5 +107,6 @@ function mostrarTempo() {
     });
     timer.innerHTML = `${tempoFormatado}`;
 }
+
 
 mostrarTempo();
