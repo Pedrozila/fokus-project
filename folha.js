@@ -74,6 +74,10 @@ function alterarContexto(contexto) {
 const contagemRegressiva = () => {
     if (tempoRestante <= 0) {
         alert('Tempo esgotado!');
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco'
+        if(focoAtivo) {
+            const evento = new CustomEvent
+        }
         clearInterval(intervaloId);
         return;
     }
