@@ -76,7 +76,8 @@ const contagemRegressiva = () => {
         alert('Tempo esgotado!');
         const focoAtivo = html.getAttribute('data-contexto') == 'foco'
         if(focoAtivo) {
-            const evento = new CustomEvent
+            const evento = new CustomEvent('FocoFinalizado')
+            document.dispatchEvent(evento)
         }
         clearInterval(intervaloId);
         return;
@@ -111,6 +112,5 @@ function mostrarTempo() {
     });
     timer.innerHTML = `${tempoFormatado}`;
 }
-
 
 mostrarTempo();
